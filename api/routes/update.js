@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 
     Events.updateEvent(
         async () => {
-            await executeEvent(update, idevent);
+            await executeEvent(update, idevent, true);
         },
         parseInt(update.if.left.freq),
         idevent

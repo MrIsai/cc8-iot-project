@@ -15,8 +15,9 @@ const compareSensor = (sensorl, sensord, condition) => {
     return false;
 };
 
-const executeEvent = async (event, eventid) => {
+const executeEvent = async (event, eventid, isUpdating) => {
     if (eventid) console.log(`\n---\nExecuting event with id: ${eventid}`);
+
     let deviceinfo;
     const ifcondition = event.if;
     const ifthen = event.then;

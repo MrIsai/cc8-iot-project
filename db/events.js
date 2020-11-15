@@ -15,12 +15,18 @@ const saveNewEvent = async (event, requestid, idEvent) => {
     return result;
 };
 
+const getEvent = async (eventId) => {
+    const eventsCollection = await getCollection("events");
+    const result = await (eventsCollection.find({idEvent: ObjectId(eventId)})).toArray();
+    return result;
+}
+
 const updateEvent = async (eventId, event) => {
     const eventsCollection = await getCollection("events");
-    const result = await eventsCollection.updateOne(
+    /* const result = await eventsCollection.updateOne(
         { _id: ObjectId(eventId) },
         { $set: { event: event } }
-    );
+    ); */
 };
 
 const deleteEvent = async (eventId) => {
