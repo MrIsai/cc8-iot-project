@@ -42,21 +42,13 @@ class Events {
 
     deleteEvent(id) {
         this.events = this.events.filter((e, i) => {
-            console.log(
-                "[comparando ids] eventId:",
-                e.eventId,
-                "!== id gived:",
-                ObjectId(id),
-                "->",
-                e.eventId.toString() != ObjectId(id).toString()
-            );
             if (e.eventId.toString() != ObjectId(id).toString()) return true;
             else {
                 console.log("[EVENTS] Eliminando evento", id);
                 e.stopEvent();
                 return false;
             }
-            
+
         });
 
         const ids = this.events.map((v) => v.id);

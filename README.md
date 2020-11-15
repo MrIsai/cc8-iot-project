@@ -17,7 +17,63 @@ El hardware que conforma este sistema son los siguientes:
 ### Base de datos
 
 La base de datos usada para este proyecto fue MongoDB.  
-Para mas informacion o descarga del driver acceder a su pagina oficial https://docs.mongodb.com/manual/mongo/
+Para mas informacion o si deseas descargar del driver puedes acceder a su pagina oficial https://docs.mongodb.com/manual/mongo/
 
-#### **Colecciones**
-...
+#### **Colecciones en MongoDB**  
+
+Para la recopilacion de informacion tanto de los requests recibidos y los responses enviados son guardados en sus respectivas colecciones. Para este proyecto se han usado cuetro colecciones de las cuales son:  
+
+Requests
+
+```json
+{
+    "id": String,    //id del que envia el request
+    "url": String,    //url del que envia el request
+    "date": Date,     //fecha en formato ISO
+    "type": String,   //tipo de request (search, info, change, etc)
+    "data": {}        //cuerpo del request
+}
+```  
+
+Responses  
+
+```json
+{
+    "id": String,
+    "url": String,
+    "date": Date,
+    "type": String,
+    "request_id": ObjectId, // _id generado para el request al guardar en base de datos
+    "data": {}
+}
+```
+
+Changes (cambios por cada actualizacion del Virtual Device)
+
+```json
+{
+    "status": Boolean,
+    "text": String,
+    "sensor": Integer,
+    "date": Date
+}
+```
+
+Eventos
+
+```json
+{
+    "_id": ObjectId,
+    "event": {},     //json enviado en el request
+    "date": Date,
+    "request_id": ObjectId
+}
+```
+
+### Librerias usadas para Node.js  
+
+Para la implementacion del servidor se usaron diferentes librerias que proporcionaban la capacidad de realizar algunas acciones de una manera mas facil las cuales fueron:
+
+- **Express.js** (librerias para levantar el servidor y las rutas)
+- **Moment.js**  (libreria para formatear fechas en formato ISO)
+- **Axios**      (libreria para ejecutar requests a otros middlewares)

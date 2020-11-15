@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
         await saveResponse(response, "change", insertedId);
         return;
     }
-
+    
     for (const deviceid in change) {
         //const status = change[deviceid].status == "true";
         const { status, text } = change[deviceid];
